@@ -13,10 +13,10 @@ class CreateMasterLocationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('master_locations', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+        // Schema::create('master_locations', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->timestamps();
+        // });
     }
 
     /**
