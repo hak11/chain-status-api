@@ -6,7 +6,7 @@
     <h1 class="page-title">
         <i class="voyager-news"></i> {{ $dataType->display_name_plural }}
         <a href="{{ route('voyager.'.$dataType->slug.'.create') }}" class="btn btn-success">
-            <i class="voyager-plus"></i> {{ Voyager::setting('add') }}
+            <i class="voyager-plus"></i> Add New
         </a>
     </h1>
 @stop
@@ -40,13 +40,13 @@
                                     @endforeach
                                     <td class="no-sort no-click">
                                         <div class="btn-sm btn-danger pull-right delete" data-id="{{ $data->id }}">
-                                            <i class="voyager-trash"></i> {{ Voyager::setting('delete') }}
+                                            <i class="voyager-trash"></i> Delete
                                         </div>
                                         <a href="{{ route('voyager.'.$dataType->slug.'.edit', $data->id) }}" class="btn-sm btn-primary pull-right edit">
-                                            <i class="voyager-edit"></i> {{ Voyager::setting('edit') }}
+                                            <i class="voyager-edit"></i> Edit
                                         </a>
                                         <a href="{{ route('voyager.'.$dataType->slug.'.show', $data->id) }}" class="btn-sm btn-warning pull-right">
-                                            <i class="voyager-eye"></i> {{ Voyager::setting('view') }}
+                                            <i class="voyager-eye"></i> View
                                         </a>
                                     </td>
                                 </tr>
