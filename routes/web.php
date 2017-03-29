@@ -14,3 +14,5 @@
 Route::group(['prefix' => '/'], function () {
     Voyager::routes();
 });
+Route::get('/forum','\App\Http\Controllers\Voyager\Forum@index')->middleware('cors');
+Route::post('/forum','\App\Http\Controllers\Voyager\Forum@addData')->middleware('cors');
