@@ -23,23 +23,26 @@ class Forum extends BaseVoyagerAuthController
   }
 
   public function loopingComments($id){
-    $comments = ForumStatus::all()->where('parent_id',$id)->where('param',false);
+    $comments = ForumStatus::all()->where('parent_id',$id);
+    $responseArray=[];
     foreach ($comments as $val) {
-      $val['countAction'] = $this->countAction($val->id);
-      $val['countComment'] = $this->countComment($val->id);
-      $val['actions'] = $this->loopingActions($val->id);
-      if ($val['countComment'] > 0) {
-        $val['comments'] = $this->loopingCommentsSecond($val->id);
-      } else {
-        $val['comments'] = array();
-      }
+        $val['countAction'] = $this->countAction($val->id);
+        $val['countComment'] = $this->countComment($val->id);
+        $val['actions'] = $this->loopingActions($val->id);
+        if ($val['countComment'] > 0) {
+          $val['comments'] = $this->loopingCommentsSecond($val->id);
+        } else {
+          $val['comments'] = array();
+        }
+      array_push($responseArray,$val);
     }
 
-    return $comments;
+    return $responseArray;
   }
 
   public function loopingCommentsSecond($id){
     $comments = ForumStatus::all()->where('parent_id',$id);
+    $responseArray=[];
     foreach ($comments as $val) {
       $val['countAction'] = $this->countAction($val->id);
       $val['countComment'] = $this->countComment($val->id);
@@ -49,9 +52,10 @@ class Forum extends BaseVoyagerAuthController
       } else {
         $val['comments'] = array();
       }
+      array_push($responseArray,$val);
     }
 
-    return $comments;
+    return $responseArray;
   }
 
   public function countComment($id){
